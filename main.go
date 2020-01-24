@@ -104,7 +104,26 @@ func main() {
 				continue
 			}
 
-			log.Printf("Unit %s is now %s (%s)", unitName, activeState.Value(), subState.Value())
+			activeStateString := activeState.Value().(string)
+			subStateString := subState.Value().(string)
+
+			if len(currentConfig.Watch.FilterActiveStates) != 0 {
+				// we have a filter enabled, apply it
+				stateInFilter := false
+				for _, filteredState := range currentConfig.Watch.FilterActiveStates {
+					if filteredState == activeStateString {
+						stateInFilter = true
+						break
+					}
+				}
+
+				if !stateInFilter {
+					// we don't care about this event, ignore it
+					continue
+				}
+			}
+
+			log.Printf("Unit %s is now %s (%s)", unitName, activeStateString, subStateString)
 		}
 	}
 }

@@ -14,12 +14,14 @@ type config struct {
 }
 
 type watchConfig struct {
-	Units []string
+	Units              []string
+	FilterActiveStates []string
 }
 
 var defaultConfig = `# systemd-notify configuration
 [watch]
 Units = [ "important-thing.service" ]
+FilterActiveStates = []
 `
 
 func createDefault() error {

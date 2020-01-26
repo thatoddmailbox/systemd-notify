@@ -9,19 +9,33 @@ import (
 
 var currentConfig *config
 
-type config struct {
-	Watch watchConfig
-}
-
 type watchConfig struct {
 	Units              []string
 	FilterActiveStates []string
+}
+
+type notifyTeamsConfig struct {
+	Enabled    bool
+	WebhookURL string
+}
+
+type notifyConfig struct {
+	Teams notifyTeamsConfig
+}
+
+type config struct {
+	Watch  watchConfig
+	Notify notifyConfig
 }
 
 var defaultConfig = `# systemd-notify configuration
 [watch]
 Units = [ "important-thing.service" ]
 FilterActiveStates = []
+
+[notify.teams]
+Enabled = false
+WebhookURL = ""
 `
 
 func createDefault() error {

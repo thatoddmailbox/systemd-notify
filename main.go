@@ -123,7 +123,7 @@ func main() {
 				}
 			}
 
-			log.Printf("Unit %s is now %s (%s)", unitName, activeStateString, subStateString)
+			notify(unitName, activeStateString, subStateString)
 		}
 	}
 }

@@ -48,7 +48,10 @@ func createDefault() error {
 
 func loadConfig() error {
 	if _, err := os.Stat("config.toml"); err != nil {
-		createDefault()
+		err = createDefault()
+		if err != nil {
+			return err
+		}
 	}
 	if _, err := toml.DecodeFile("config.toml", &currentConfig); err != nil {
 		return err

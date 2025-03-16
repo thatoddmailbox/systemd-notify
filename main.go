@@ -65,6 +65,9 @@ func main() {
 		}
 	}
 
+	previousActiveStateMap := map[string]string{}
+	previousSubStateMap := map[string]string{}
+
 	signal := make(chan *dbus.Signal, 10)
 	conn.Signal(signal)
 	for {
@@ -106,6 +109,18 @@ func main() {
 
 			activeStateString := activeState.Value().(string)
 			subStateString := subState.Value().(string)
+
+			previousActiveState, havePreviousActiveState := previousActiveStateMap[unitName]
+			previousSubState, havePreviousSubState := previousSubStateMap[unitName]
+			if havePreviousActiveState && havePreviousSubState {
+				if previousActiveState == activeStateString && previousSubState == subStateString {
+					// the state hasn't actually changed, spurious notification
+					continue
+				}
+			}
+
+			previousActiveStateMap[unitName] = activeStateString
+			previousSubStateMap[unitName] = subStateString
 
 			if len(currentConfig.Watch.FilterActiveStates) != 0 {
 				// we have a filter enabled, apply it

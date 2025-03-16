@@ -2,5 +2,7 @@ github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/NoteToScreen/teams-go v0.0.0-20190914185341-9ae4f04c8d02 h1:EytdLiknCF6Ul5WmZSc9/+4fOird7RjK7j264DuTXcE=
 github.com/NoteToScreen/teams-go v0.0.0-20190914185341-9ae4f04c8d02/go.mod h1:/SwaY4FW/l1LSaCBh5z7Tdty34MYJxW9rgLrFRwuubw=
+github.com/PromptBit/slack-go v0.1.1 h1:aobzfDftltIUJJE9F6jcc+1+BDmHRImAQufK2y3WMmA=
+github.com/PromptBit/slack-go v0.1.1/go.mod h1:HiIAHT13DS7MlXuEXamumigT+XJlVjijaKQpW8C4D7w=
 github.com/godbus/dbus/v5 v5.0.3 h1:ZqHaoEF7TBzh4jzPmqVhE/5A1z9of6orkAe5uHoAeME=
 github.com/godbus/dbus/v5 v5.0.3/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
